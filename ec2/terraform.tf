@@ -24,4 +24,12 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
+variable "vpc_id" {
+  type = string
+  default = ""
+}
 
+variable "my_ip" {
+  type = string
+  default = ""
+}
