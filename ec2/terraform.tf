@@ -8,13 +8,7 @@ variable "secretkey" {
   default = ""
 }
 
-
 variable "subnetid" {
-  type = string
-  default = ""
-}
-
-variable "ami" {
   type = string
   default = ""
 }
