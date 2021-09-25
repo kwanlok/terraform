@@ -34,18 +34,16 @@ resource "aws_security_group" "internet" {
   name = "internet_access"
   description = "Internet access"
   vpc_id = var.vpc_id
-  egress {
-      from_port        = 80
-      to_port          = 80
-      protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
+
+  dynamic "egress" {
+    for_each = var.egress_sg_ports
+    content {
+      from_port   = egress.value
+      to_port     = egress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
     }
-  egress {
-      from_port        = 443
-      to_port          = 443
-      protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
-    }
+  }
 }
 
 resource "aws_security_group" "ssh" {

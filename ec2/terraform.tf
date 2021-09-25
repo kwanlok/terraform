@@ -27,3 +27,9 @@ variable "my_ip" {
   type = string
   default = ""
 }
+
+variable "egress_sg_ports" {
+  type        = list(number)
+  description = "list of egress ports"
+  default     = [80,443]
+}
